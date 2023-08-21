@@ -13,10 +13,10 @@ public class CalendarController : MonoBehaviour, IEventEmitter, IUICaller {
   public int month;
   public int year;
 
-  private CalendarUI dashboardUI;
+  private CalendarUI calendarUI;
 
   void Start() {
-    dashboardUI = GameObject
+    calendarUI = GameObject
       .Find("Context")
       .GetComponent<CalendarUI>();
     var now = DateTime.Now;
@@ -28,8 +28,8 @@ public class CalendarController : MonoBehaviour, IEventEmitter, IUICaller {
   }
 
   public void DrawUI() {
-    dashboardUI.SetDateString(currentDate.ToShortDateString());
-    dashboardUI.SetEvents(GetSchedule(currentDate));
+    calendarUI.SetDateString(currentDate.ToString("dddd, dd MMMM yyyy"));
+    calendarUI.SetEvents(GetSchedule(currentDate));
   }
 
   // Schedule an event (ev) at the current date
