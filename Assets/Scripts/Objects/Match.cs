@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Match : IEventListener {
+  public string Title { get; set; }
+
   public Club Home { get; set; }
   public Club Away { get; set; }
   public (int homeGoals, int awayGoals) Result { get; set; }
@@ -12,7 +14,7 @@ public class Match : IEventListener {
   public bool IsFinished = false;
 
   public DateTime DateTime { get; set; }
-  
+
   private int minute = 0;
   private int addedTime = 0;
 
@@ -25,6 +27,7 @@ public class Match : IEventListener {
     Away = away;
     Result = (0, 0);
     spanInterval = TimeSpan.FromSeconds(10);
+    Title = $"{home} x {away} - {dateTime}";
   }
 
   public (int, int) HomeGoal(Player player) {
