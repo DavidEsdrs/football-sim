@@ -38,6 +38,12 @@ public class CalendarController : MonoBehaviour, IEventEmitter, IUICaller {
       schedule.Add(date, new());
     }
     schedule[date].Add(ev);
+    schedule[date].Sort((IEventListener a, IEventListener b) => {
+      if(a.DateTime >= b.DateTime) {
+        return 1;
+      }
+      return -1;
+    });
     _logger.Log("Scheduled: " + ev + " at " + date);
   }
 
