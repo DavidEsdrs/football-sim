@@ -8,5 +8,6 @@ public interface IEventEmitter
 
 public interface IEventListener
 {
+  public string Title { get; set; }
   void Execute();
 }
