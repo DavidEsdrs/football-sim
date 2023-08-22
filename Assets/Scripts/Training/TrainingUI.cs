@@ -49,4 +49,19 @@ public class TrainingUI {
   }
 
   private void OnChange(ChangeEvent<int> evt, string type) => trainingController.ResetTraining(type);
+
+  public int GetValueFromSlider(string type) {
+    return type switch {
+        "hardness" => hardnessSlider.value,
+        "colletive" => colletiveSlider.value,
+        "attack" => attackSlider.value,
+        "defense" => defenseSlider.value,
+        "shooting" => shootingSlider.value,
+        "passing" => passingSlider.value,
+        "crossing" => crossingSlider.value,
+        "creativity" => creativitySlider.value,
+        "trackling" => tracklingSlider.value,
+        _ => 0,
+    };
+  }
 }

@@ -49,51 +49,19 @@ public class TrainingController : MonoBehaviour {
   }
 
   public void ResetTraining(string type) {
-    switch (type) {
-      case "hardness":
-        Hardness = trainingUI.hardnessSlider.value;
-        break;
-      case "colletive":
-        Colletive = trainingUI.colletiveSlider.value;
-        break;
-      case "attack":
-        Attack = trainingUI.attackSlider.value;
-        break;
-      case "defense":
-        Defense = trainingUI.defenseSlider.value;
-        break;
-      case "shooting":
-        Shooting = trainingUI.shootingSlider.value;
-        break;
-      case "passing":
-        Passing = trainingUI.passingSlider.value;
-        break;
-      case "crossing":
-        Crossing = trainingUI.crossingSlider.value;
-        break;
-      case "creativity":
-        Creativity = trainingUI.creativitySlider.value;
-        break;
-      case "trackling":
-        Trackling = trainingUI.tracklingSlider.value;
-        break;
-      default:
-        Hardness = trainingUI.hardnessSlider.value;
-        Colletive = trainingUI.colletiveSlider.value;
-        Attack = trainingUI.attackSlider.value;
-        Defense = trainingUI.defenseSlider.value;
-        Shooting = trainingUI.shootingSlider.value;
-        Passing = trainingUI.passingSlider.value;
-        Crossing = trainingUI.crossingSlider.value;
-        Creativity = trainingUI.creativitySlider.value;
-        Trackling = trainingUI.tracklingSlider.value;
-        break;
-    }
+    Hardness = trainingUI.GetValueFromSlider("hardness");
+    Colletive = trainingUI.GetValueFromSlider("colletive");
+    Attack = trainingUI.GetValueFromSlider("attack");
+    Defense = trainingUI.GetValueFromSlider("defense");
+    Shooting = trainingUI.GetValueFromSlider("shooting");
+    Passing = trainingUI.GetValueFromSlider("passing");
+    Crossing = trainingUI.GetValueFromSlider("crossing");
+    Creativity = trainingUI.GetValueFromSlider("creativity");
+    Trackling = trainingUI.GetValueFromSlider("trackling");
   }
 
   public int GetTraining(string type) {
-    return type switch
-    {
+    return type switch {
         "hardness" => Hardness,
         "colletive" => Colletive,
         "attack" => Attack,
