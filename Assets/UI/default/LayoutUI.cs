@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System.Linq;
 
-public class CalendarUI : MonoBehaviour
+public class LayoutUI : MonoBehaviour
 {
     [SerializeField]
     private Logger _logger;
@@ -18,7 +18,6 @@ public class CalendarUI : MonoBehaviour
 
     private Label club;
 
-    private ListView schedule;    
 
     [SerializeField]
     GameObject Calendar;
@@ -37,7 +36,6 @@ public class CalendarUI : MonoBehaviour
 
         club = document.rootVisualElement.Q<Label>("club");
 
-        schedule = document.rootVisualElement.Q<ListView>("schedule");
     }
 
     private void NextDay() {
@@ -51,11 +49,5 @@ public class CalendarUI : MonoBehaviour
     public void SetClub(string name, Color color) {
         club.text = name;
         club.style.color = color;
-    }
-
-    public void SetEvents(List<IEventListener> events) {
-        _logger.Log("drawing events");
-        List<string> names = events.Select(ev => ev.Title).ToList();
-        schedule.itemsSource = names;
     }
 }

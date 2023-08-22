@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/sidebar/SidebarUI.uss?fileID=7433441132597879392&amp;guid=18a8af628b51ad94590d889b25ac8ae3&amp;type=3#SidebarUI" />
+    <ui:VisualElement name="sidebar" class="sidebar" style="flex-grow: 1; width: 100%; background-color: rgba(0, 30, 255, 0.11); flex-direction: column; max-width: 100%;">
+        <ui:VisualElement name="navigation" style="flex-grow: 1;">
+            <ui:VisualElement name="nav" style="flex-grow: 1; align-items: center; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+                <ui:Button text="agenda" parse-escape-sequences="true" display-tooltip-when-elided="true" name="scheduling" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background-color: rgb(0, 79, 255); color: rgb(255, 255, 255); -unity-font-style: bold; width: 100%;" />
+                <ui:Button text="treino" parse-escape-sequences="true" display-tooltip-when-elided="true" name="training" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background-color: rgb(0, 79, 255); color: rgb(255, 255, 255); -unity-font-style: bold; width: 100%;" />
+                <ui:Button text="tática" parse-escape-sequences="true" display-tooltip-when-elided="true" name="tactics" style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background-color: rgb(0, 79, 255); color: rgb(255, 255, 255); -unity-font-style: bold; width: 100%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="CLUB" parse-escape-sequences="true" display-tooltip-when-elided="true" name="club" style="-unity-text-align: middle-center; justify-content: flex-end; align-items: center; margin-bottom: 10%; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);" />
+    </ui:VisualElement>
+</ui:UXML>

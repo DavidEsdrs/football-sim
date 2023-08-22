@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="HeaderUI" src="project://database/Assets/UI/header/HeaderUI.uxml?fileID=9197481963319205126&amp;guid=04da7ffbaacdc8448adb4c38a9d81c7a&amp;type=3#HeaderUI" />
+    <ui:Template name="SidebarUI" src="project://database/Assets/UI/sidebar/SidebarUI.uxml?fileID=9197481963319205126&amp;guid=2798d169c096b174a9a5b11b29e14e44&amp;type=3#SidebarUI" />
+    <ui:Template name="SchedulingUI" src="project://database/Assets/Resources/scheduling/SchedulingUI.uxml?fileID=9197481963319205126&amp;guid=77ef19c3d31a78a4f815a80ad61ca746&amp;type=3#SchedulingUI" />
+    <ui:Template name="TrainingUI" src="project://database/Assets/Resources/training/TrainingUI.uxml?fileID=9197481963319205126&amp;guid=996e831464d43a548b0083819ea2f6f6&amp;type=3#TrainingUI" />
+    <Style src="project://database/Assets/UI/default/LayoutUI.uss?fileID=7433441132597879392&amp;guid=dadfdf0a7d372e04da7bcbdcfb502445&amp;type=3#LayoutUI" />
+    <ui:Instance template="HeaderUI" name="HeaderUI" />
+    <ui:VisualElement name="main" style="flex-grow: 1; flex-direction: row;">
+        <ui:Instance template="SidebarUI" name="sidebar" style="width: 15%;" />
+        <ui:VisualElement name="SchedulingContainer" style="flex-grow: 1;">
+            <ui:Instance template="SchedulingUI" name="SchedulingUI" style="flex-grow: 1; display: flex;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TrainingContainer" class="none" style="flex-grow: 1;">
+            <ui:Instance template="TrainingUI" name="TrainingUI" style="display: flex; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
