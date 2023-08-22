@@ -82,9 +82,4 @@ public class UIController : MonoBehaviour {
     club.style.color = color;
   }
 
-  public void SetEvents(List<IEventListener> events) {
-    _logger.Log("drawing events");
-    List<string> names = events.Select(ev => ev.Title).ToList();
-    document.rootVisualElement.Q<ListView>("schedule").itemsSource = names;
-  }
 }

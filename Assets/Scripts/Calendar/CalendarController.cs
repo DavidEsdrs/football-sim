@@ -16,18 +16,21 @@ public class CalendarController : MonoBehaviour, IEventEmitter, IUICaller {
   [SerializeField]
   private UIController uiController;
 
+  private SchedulingUI schedulingUI;
+
   void Start() {
     var now = DateTime.Now;
     currentDate = new DateTime(now.Year, now.Month, now.Day);
     day = currentDate.Day;
     month = currentDate.Month;
     year = currentDate.Year;
+    schedulingUI = new(uiController.document.rootVisualElement, this);
     DrawUI();
   }
 
   public void DrawUI() {
     uiController.SetDateString(currentDate.ToString("dddd, dd MMMM yyyy"));
-    uiController.SetEvents(GetSchedule(currentDate));
+    schedulingUI.SetEvents(GetSchedule(currentDate));
   }
 
   // Schedule an event (ev) at the current date

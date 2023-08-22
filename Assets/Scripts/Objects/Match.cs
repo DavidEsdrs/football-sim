@@ -14,6 +14,10 @@ public class Match : IEventListener {
   public bool IsFinished = false;
 
   public DateTime DateTime { get; set; }
+  public string Description { get; set; }
+  public bool IsPriority { get; set; }
+  public int Priority { get; set; }
+  public bool IsCompleted { get; set; }
 
   private int minute = 0;
   private int addedTime = 0;
@@ -28,6 +32,9 @@ public class Match : IEventListener {
     Result = (0, 0);
     spanInterval = TimeSpan.FromSeconds(10);
     Title = $"{home} x {away} - {dateTime}";
+    Description = this.ToString();
+    IsPriority = true;
+    Priority = 1;
   }
 
   public (int, int) HomeGoal(Player player) {
