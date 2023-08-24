@@ -12,8 +12,6 @@ public class UIController : MonoBehaviour {
   public VisualElement header;
   public VisualElement sidebar;
 
-  public VisualElement content;
-
   public List<string> screens = new();
 
   [Header("Header")]
@@ -32,12 +30,6 @@ public class UIController : MonoBehaviour {
   void Awake() {
     SetLayout();
 
-    VisualTreeAsset trainingUI = Resources.Load<VisualTreeAsset>("training/TrainingUI");
-    VisualTreeAsset schedulingUI = Resources.Load<VisualTreeAsset>("scheduling/SchedulingUI");
-
-    screens.Add("SchedulingContainer");
-    screens.Add("TrainingContainer"); 
-
     nextBtn = document.rootVisualElement.Q<Button>("next-date");
     nextBtn.RegisterCallback<ClickEvent>(NextDay);
 
@@ -46,14 +38,31 @@ public class UIController : MonoBehaviour {
     club = document.rootVisualElement.Q<Label>("club");
   }
 
+  // set screens
   void SetLayout() {
     document = GetComponent<UIDocument>();
 
-    content = document.rootVisualElement.Q<VisualElement>("content");
     sidebar = document.rootVisualElement.Q<VisualElement>("sidebar");
 
-    sidebar.Q<Button>("scheduling").RegisterCallback<ClickEvent, string>(Goto, "SchedulingContainer");
-    sidebar.Q<Button>("training").RegisterCallback<ClickEvent, string>(Goto, "TrainingContainer");
+    RegisterScreenCallback(sidebar, "scheduling", "SchedulingContainer");
+    RegisterScreenCallback(sidebar, "training", "TrainingContainer");
+  }
+
+  /// <summary>
+  /// Register callback in sidebar. I.e, register the callback in which will change screen
+  /// </summary>
+  /// <param name="visualElement">
+  ///  name of the container that holds the navigation buttons (e.g. the sidebar)
+  /// </param>
+  /// <param name="navName">
+  ///  name of the navigation button in the sidebar
+  /// </param>
+  /// <param name="screenContainerName">
+  /// name of the container in which holds the screen (that can be navigated to)
+  /// </param>
+  void RegisterScreenCallback(VisualElement visualElement, string navName, string screenContainerName) {
+    screens.Add(screenContainerName);
+    visualElement.Q<Button>(navName).RegisterCallback<ClickEvent, string>(Goto, screenContainerName);
   }
 
   // Sidebar
@@ -69,14 +78,17 @@ public class UIController : MonoBehaviour {
     }
   }
 
+  // Increment current date by one day
   private void NextDay(ClickEvent ev) {
     calendarController.NextDay();
   }
 
+  // Set the current date in the UI
   public void SetDateString(string date) {
     this.date.text = date;
   }
 
+  // Set the club in the UI
   public void SetClub(string name, Color color) {
     club.text = name;
     club.style.color = color;
