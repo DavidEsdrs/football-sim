@@ -1,71 +1,90 @@
+using System;
 using System.Collections.Generic;
 
+[Serializable]
 public class PlayerAttributes {
-  public Dictionary<string, float> Attributes = new Dictionary<string, float>();
+  public Dictionary<string, float> Attributes = new();
+  private List<PlayerAttribute> playerAttributes = new();
+
+  [Serializable]
+  protected class PlayerAttribute {
+    public string key;
+    public int value;
+
+    public PlayerAttribute(string key, int value) {
+      this.key = key;
+      this.value = value;
+    }
+  }
 
   public PlayerAttributes() {
     // Physical attributes
-    Attributes.Add("MaxSpeed", 0);
-    Attributes.Add("Acceleration", 0);
-    Attributes.Add("Deceleration", 0);
-    Attributes.Add("Recuperation", 0);
-    Attributes.Add("Resistance", 0);
+    AddProperty("MaxSpeed", 0);
+    AddProperty("Acceleration", 0);
+    AddProperty("Deceleration", 0);
+    AddProperty("Recuperation", 0);
+    AddProperty("Resistance", 0);
     
     // Physical attributes (dribbling)
-    Attributes.Add("Agility", 0);
-    Attributes.Add("Balance", 0);
-    Attributes.Add("Flexibility", 0);
+    AddProperty("Agility", 0);
+    AddProperty("Balance", 0);
+    AddProperty("Flexibility", 0);
     
     // Physical attributes (shooting)
-    Attributes.Add("Jump", 0);
+    AddProperty("Jump", 0);
 
     // Physical attributes (tackling)
-    Attributes.Add("Strength", 0);
-    Attributes.Add("Aggressiveness", 0);
-    Attributes.Add("Determination", 0);
+    AddProperty("Strength", 0);
+    AddProperty("Aggressiveness", 0);
+    AddProperty("Determination", 0);
 
     // Tecnical attributes
-    Attributes.Add("BallControl", 0);
-    Attributes.Add("FirstTouch", 0);
-    Attributes.Add("Dribbling", 0);
-    Attributes.Add("Passing", 0);
-    Attributes.Add("LongPassing", 0);
-    Attributes.Add("Crossing", 0);
-    Attributes.Add("Shooting", 0);
-    Attributes.Add("Heading", 0);
-    Attributes.Add("Tackling", 0);
-    Attributes.Add("Marking", 0);
-    Attributes.Add("Intercepting", 0);
-    Attributes.Add("Clearing", 0);
+    AddProperty("BallControl", 0);
+    AddProperty("FirstTouch", 0);
+    AddProperty("Dribbling", 0);
+    AddProperty("Passing", 0);
+    AddProperty("LongPassing", 0);
+    AddProperty("Crossing", 0);
+    AddProperty("Shooting", 0);
+    AddProperty("Heading", 0);
+    AddProperty("Tackling", 0);
+    AddProperty("Marking", 0);
+    AddProperty("Intercepting", 0);
+    AddProperty("Clearing", 0);
 
     // Mental attributes
-    Attributes.Add("Positioning", 0);
-    Attributes.Add("Anticipation", 0);
-    Attributes.Add("Vision", 0);
-    Attributes.Add("Composure", 0);
-    Attributes.Add("Concentration", 0);
-    Attributes.Add("Decisions", 0);
-    Attributes.Add("Teamwork", 0);
-    Attributes.Add("Leadership", 0);
-    Attributes.Add("WorkRate", 0);
-    Attributes.Add("OffTheBall", 0);
-    Attributes.Add("Bravery", 0);
-    Attributes.Add("Aggression", 0);
-    Attributes.Add("Flair", 0);
-    Attributes.Add("Dirtiness", 0);
-    Attributes.Add("Temperament", 0);
-    Attributes.Add("Adaptability", 0);
-    Attributes.Add("Loyalty", 0);
-    Attributes.Add("Pressure", 0);
-    Attributes.Add("Versatility", 0);
+    AddProperty("Positioning", 0);
+    AddProperty("Anticipation", 0);
+    AddProperty("Vision", 0);
+    AddProperty("Composure", 0);
+    AddProperty("Concentration", 0);
+    AddProperty("Decisions", 0);
+    AddProperty("Teamwork", 0);
+    AddProperty("Leadership", 0);
+    AddProperty("WorkRate", 0);
+    AddProperty("OffTheBall", 0);
+    AddProperty("Bravery", 0);
+    AddProperty("Aggression", 0);
+    AddProperty("Flair", 0);
+    AddProperty("Dirtiness", 0);
+    AddProperty("Temperament", 0);
+    AddProperty("Adaptability", 0);
+    AddProperty("Loyalty", 0);
+    AddProperty("Pressure", 0);
+    AddProperty("Versatility", 0);
 
-    Attributes.Add("ConsistencyInAGame", 0);
-    Attributes.Add("ConsistencyInCareer", 0);
+    AddProperty("ConsistencyInAGame", 0);
+    AddProperty("ConsistencyInCareer", 0);
 
-    Attributes.Add("Controversy", 0);
-    Attributes.Add("Professionalism", 0);
-    Attributes.Add("ImportantMatches", 0);
-    Attributes.Add("InjuryProneness", 0);
-    Attributes.Add("Sportsmanship", 0);
+    AddProperty("Controversy", 0);
+    AddProperty("Professionalism", 0);
+    AddProperty("ImportantMatches", 0);
+    AddProperty("InjuryProneness", 0);
+    AddProperty("Sportsmanship", 0);
+  }
+
+  public void AddProperty(string key, int value) {
+    Attributes.Add(key, value);
+    playerAttributes.Add(new(key, value));
   }
 }
